@@ -1,0 +1,70 @@
+.popular {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  height: 90vh;
+}
+
+.popular h1 {
+  color: black;
+  font-size: 50px;
+  font-weight: 600;
+}
+.popular hr {
+  width: 200px;
+  height: 6px;
+  border-radius: 10px;
+  background: #252525;
+}
+.popular-item {
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px; /* Απόσταση μεταξύ προϊόντων */
+}
+
+/* Προϊόντα - σταθερό πλάτος και responsive */
+.popular-item .item {
+  flex: 1 1 200px; /* Grow, shrink, basis */
+  max-width: 250px;
+  min-width: 180px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.popular-item .item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.popular-item .item:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive για tablets */
+@media (max-width: 768px) {
+  .popular-item {
+    gap: 20px;
+  }
+  .popular-item .item {
+    flex: 1 1 150px;
+  }
+}
+
+/* Responsive για κινητά */
+@media (max-width: 480px) {
+  .popular-item {
+    gap: 15px;
+  }
+  .popular-item .item {
+    flex: 1 1 100%;
+    max-width: none;
+  }
+}

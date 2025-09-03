@@ -1,0 +1,55 @@
+.cartitems-header,
+.cartitem-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* απλώνει τα στοιχεία σε όλη τη γραμμή */
+  width: 100%;
+  margin: 10px 0;
+  min-height: 100px;
+}
+
+.cartitems-header-item,
+.cartitem-title,
+.cartitem-price,
+.cartitem-quantity,
+.cartitem-total,
+.cartitem-remove-icon .cartitems-header-products {
+  flex: 1; /* όλα τα στοιχεία έχουν ίδιο πλάτος */
+  text-align: center;
+}
+
+.cartitem-title {
+  text-align: left; /* τίτλος πιο αριστερά */
+}
+
+.cartitem-remove-icon {
+  width: 20px;
+  cursor: pointer;
+}
+
+.cartitem-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.cartitem-info {
+  display: flex;
+  flex-direction: column; /* τίτλος πάνω, περιγραφή κάτω */
+  justify-content: center;
+  flex: 2;
+}
+
+.cartitem-title {
+  font-weight: bold;
+}
+
+.cartitem-description {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.cartitem-remove-icon {
+  width: 20px;
+  cursor: pointer;
+}
