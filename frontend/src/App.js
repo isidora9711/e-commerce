@@ -11,33 +11,37 @@ import men_banner from "./Components/Assets/Frontend_Assets/banner_mens.png";
 import women_banner from "./Components/Assets/Frontend_Assets/banner_women.png";
 import kid_banner from "./Components/Assets/Frontend_Assets/banner_kids.png";
 
+import AuthContextProvider from "./Context/AuthContext";
+
 function App() {
   return (
     <div>
-      <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Shop />} />
-          <Route
-            path="/men"
-            element={<ShopCategory banner={men_banner} category="men" />}
-          />
-          <Route
-            path="/women"
-            element={<ShopCategory banner={women_banner} category="women" />}
-          />
-          <Route
-            path="/kid"
-            element={<ShopCategory banner={kid_banner} category="kid" />}
-          />
+      <AuthContextProvider>
+        <BrowserRouter>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Shop />} />
+            <Route
+              path="/men"
+              element={<ShopCategory banner={men_banner} category="men" />}
+            />
+            <Route
+              path="/women"
+              element={<ShopCategory banner={women_banner} category="women" />}
+            />
+            <Route
+              path="/kid"
+              element={<ShopCategory banner={kid_banner} category="kid" />}
+            />
 
-          <Route path="/product/:productId" element={<Product />} />
+            <Route path="/product/:productId" element={<Product />} />
 
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/login" element={<LoginSignup />} />
-        </Routes>
-        <Footer />
-      </BrowserRouter>
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/login" element={<LoginSignup />} />
+          </Routes>
+          <Footer />
+        </BrowserRouter>
+      </AuthContextProvider>
     </div>
   );
 }

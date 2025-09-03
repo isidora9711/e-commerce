@@ -10,19 +10,19 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    const success = login(email, password);
+    const success = await login(email, password);
     if (success) {
       setError("");
-      navigate("/"); // redirect στο home μετά login
+      navigate("/");
     } else {
       setError("Invalid email or password");
     }
   };
 
   if (isLoggedIn) {
-    navigate("/"); // αν είναι ήδη logged in
+    navigate("/");
     return null;
   }
 

@@ -3,33 +3,36 @@ import { AuthContext } from "../Context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
-  const { signup, isLoggedIn } = useContext(AuthContext);
+  const { signup } = useContext(AuthContext);
   const navigate = useNavigate();
 
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleSignup = (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
-    const success = signup(email, password);
+    const success = await signup(name, email, password);
     if (success) {
       setError("");
-      navigate("/login");
+      navigate("/");
     } else {
-      setError("User already exists or invalid data");
+      setError("Signup failed. User may already exist.");
     }
   };
 
-  if (isLoggedIn) {
-    navigate("/"); // αν είναι ήδη logged in
-    return null;
-  }
-
   return (
     <div className="auth-container">
-      <h2>Signup</h2>
+      <h2>Sign Up</h2>
       <form onSubmit={handleSignup}>
+        <input
+          type="text"
+          placeholder="Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
         <input
           type="email"
           placeholder="Email"
@@ -45,7 +48,7 @@ const Signup = () => {
           required
         />
         {error && <p style={{ color: "red" }}>{error}</p>}
-        <button type="submit">Signup</button>
+        <button type="submit">Sign Up</button>
       </form>
     </div>
   );
