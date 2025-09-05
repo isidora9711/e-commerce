@@ -15,10 +15,9 @@ const Signup = () => {
     e.preventDefault();
     const success = await signup(name, email, password);
     if (success) {
-      setError("");
-      navigate("/");
+      navigate("/"); // πάει home μετά το signup
     } else {
-      setError("Signup failed. User may already exist.");
+      setError("Signup failed, try again");
     }
   };
 
@@ -28,14 +27,14 @@ const Signup = () => {
       <form onSubmit={handleSignup}>
         <input
           type="text"
-          placeholder="Name"
+          placeholder="Your Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
         />
         <input
           type="email"
-          placeholder="Email"
+          placeholder="Email Address"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
@@ -48,7 +47,7 @@ const Signup = () => {
           required
         />
         {error && <p style={{ color: "red" }}>{error}</p>}
-        <button type="submit">Sign Up</button>
+        <button type="submit">Continue</button>
       </form>
     </div>
   );

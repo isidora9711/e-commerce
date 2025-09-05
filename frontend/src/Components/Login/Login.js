@@ -3,7 +3,7 @@ import { AuthContext } from "../Context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const { login, isLoggedIn } = useContext(AuthContext);
+  const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
@@ -14,17 +14,11 @@ const Login = () => {
     e.preventDefault();
     const success = await login(email, password);
     if (success) {
-      setError("");
       navigate("/");
     } else {
       setError("Invalid email or password");
     }
   };
-
-  if (isLoggedIn) {
-    navigate("/");
-    return null;
-  }
 
   return (
     <div className="auth-container">

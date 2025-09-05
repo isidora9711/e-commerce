@@ -10,6 +10,7 @@ const getDefaultCart = () => {
   }
   return cart;
 };
+
 const ShopContextProvider = (props) => {
   const [cartItems, setCartItems] = useState(getDefaultCart());
 
@@ -24,13 +25,31 @@ const ShopContextProvider = (props) => {
       return updatedCart;
     });
   };
+
   const removeFromCart = (itemId) => {
     setCartItems((prev) => {
       const updatedCart = { ...prev, [itemId]: Math.max(prev[itemId] - 1, 0) };
       return updatedCart;
     });
   };
-  const contextValue = { all_product, cartItems, addToCart, removeFromCart };
+
+  // 🟢 Νέα συνάρτηση: Υπολογίζει το σύνολο των προϊόντων στο cart
+  const getTotalCartItems = () => {
+    let total = 0;
+    for (const item in cartItems) {
+      total += cartItems[item];
+    }
+    return total;
+  };
+
+  const contextValue = {
+    all_product,
+    cartItems,
+    addToCart,
+    removeFromCart,
+    getTotalCartItems,
+  };
+
   return (
     <ShopContext.Provider value={contextValue}>
       {props.children}

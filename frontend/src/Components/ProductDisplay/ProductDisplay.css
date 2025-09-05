@@ -4,20 +4,31 @@
   gap: 30px;
 }
 
+/* Left side = small images + big image */
 .productdisplay-left {
+  display: flex;
+  gap: 15px;
+}
+
+.productdisplay-img-list {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-
 .productdisplay-img-list img {
-  height: 163px;
-  display: block;
+  width: 80px;
+  height: 100px;
+  object-fit: cover;
+  cursor: pointer;
 }
-.productdisplay-main-img {
-  width: 536px;
+
+.productdisplay-main-img img {
+  width: 500px;
   height: 600px;
+  object-fit: cover;
 }
+
+/* Right side */
 .productdisplay-right {
   margin: 0px 70px;
   display: flex;
@@ -51,25 +62,47 @@
 .productdisplay-right-price-new {
   color: #ff4141;
 }
+.productdisplay-right-description {
+  margin-bottom: 20px;
+  font-size: 15px;
+  line-height: 1.4;
+  color: #444;
+}
+
+/* Sizes */
 .productdisplay-right-size h1 {
-  margin-top: 55px;
+  margin-top: 25px;
   color: #656565;
   font-size: 20px;
   font-weight: 600;
+  margin-bottom: 10px;
 }
-.productdisplay-right-size {
+.sizes-container {
   display: flex;
-  flex-direction: column;
-  margin: 30px 0px;
-  gap: 20px;
+  flex-direction: row;
+  gap: 10px;
 }
-.productdisplay-right-size div {
-  padding: 18px 24px;
+.size-box {
+  padding: 10px 15px;
   background: white;
   border: 1px solid #e2e2e2;
   border-radius: 3px;
   cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  text-align: center;
 }
+.size-box:hover {
+  border-color: #ff4141;
+  background: #ffecec;
+}
+.size-box.active {
+  border-color: #ff4141;
+  background: #ff4141;
+  color: #fff;
+}
+
+/* Button */
 .productdisplay-right button {
   padding: 20px 40px;
   width: 200px;
@@ -77,18 +110,43 @@
   font-weight: 600;
   color: whitesmoke;
   background: coral;
-  margin-bottom: 20px;
+  margin: 20px 0;
   border: none;
   outline: none;
   cursor: pointer;
+  transition: background 0.2s ease;
 }
-.productdisplay-right-discription {
-  display: block;
-  flex-direction: column;
+.productdisplay-right button:hover {
+  background: #ff4141;
 }
+
+/* Category text */
 .productdisplay-right-category {
   margin-top: 10px;
 }
 .productdisplay-right-category span {
   font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 1280px) {
+  .productdisplay {
+    margin: 0px 40px;
+    flex-direction: column;
+    align-items: center;
+  }
+  .productdisplay-left {
+    flex-direction: column;
+    align-items: center;
+  }
+  .productdisplay-img-list {
+    flex-direction: row;
+  }
+  .productdisplay-main-img img {
+    width: 100%;
+    height: auto;
+  }
+  .productdisplay-right {
+    margin: 20px 0;
+  }
 }
